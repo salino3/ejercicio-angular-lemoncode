@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'gallery', component: GalleryComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'crud', component: CRUDComponent },
+  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
