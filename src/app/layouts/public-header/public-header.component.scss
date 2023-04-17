@@ -1,0 +1,21 @@
+.header_container{
+
+   display: grid;
+   grid-template-rows: repeat(2, 25%);
+   gap: 3em;
+   justify-content: center;
+
+  .div1{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    margin: 1em 1em 0em;
+    white-space: nowrap;
+
+
+    img {
+      position: relative;
+      right: 15em;
+    }
+  }
+
+}
