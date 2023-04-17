@@ -2,8 +2,10 @@
 
    display: grid;
    grid-template-rows: repeat(2, 25%);
-   gap: 3em;
    justify-content: center;
+   border: solid 2px blue;
+   gap: 3em;
+   margin-bottom: 3em;
 
   .div1{
     display: grid;

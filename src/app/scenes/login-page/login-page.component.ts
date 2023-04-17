@@ -41,7 +41,6 @@ export class LoginPageComponent implements OnInit {
     const password = this.loginForm.controls['password'].value;
     if (this.authService.login({ username, password })) {
       console.log('Successful login!');
-      // Aquí podrías redirigir al usuario a la página de perfil, por ejemplo
       this.router.navigate(['/profile']);
     } else {
       console.log('Incorrect username or password.');
