@@ -1,0 +1,20 @@
+form {
+  margin: 3em 0em;
+}
+
+input:focus{
+  outline: 0;
+}
+
+.is-valid {
+  border: solid 3px green;
+  border-color: green;
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+.invalid-feedback {
+  color: red;
+}

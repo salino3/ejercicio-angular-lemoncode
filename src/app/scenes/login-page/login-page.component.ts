@@ -1,21 +1,39 @@
-// import { Component } from '@angular/core';
+// import { Component, OnInit } from '@angular/core';
+// import {
+//    FormGroup,
+//   FormBuilder,
+//   AbstractControl,
+//   Validators,
+// } from '@angular/forms';
+// import { AuthService } from 'src/app/services/auth.service';
 
 // @Component({
 //   selector: 'app-login-page',
 //   templateUrl: './login-page.component.html',
 //   styleUrls: ['./login-page.component.scss'],
 // })
-// export class LoginPageComponent {
-//   public username: string = '';
-//   public password: string = '';
+// export class LoginPageComponent implements OnInit {
+//   public loginForm!: FormGroup;
 //   public submitted: boolean = false;
+
+//   constructor(
+//     private formBuilder: FormBuilder,
+//     private authService: AuthService
+//   ) {}
+
+//   ngOnInit(): void {
+// this.loginForm = this.formBuilder.group({
+//   username: ['', [Validators.required, Validators.minLength(7)]],
+//   password: ['', [Validators.required, Validators.minLength(7)]],
+// });
+
+//   }
 
 //   public login(): void {
 //     this.submitted = true;
-//     if (
-//       this.username === 'master8@lemoncode.net' &&
-//       this.password === '12345678'
-//     ) {
+//     const username = this.loginForm.controls['username'].value;
+//     const password = this.loginForm.controls['password'].value;
+//     if (this.authService.login({ username, password })) {
 //       console.log('Successful login!');
 //       // Aquí podrías redirigir al usuario a la página de perfil, por ejemplo
 //     } else {
@@ -25,7 +43,12 @@
 // }
 
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormBuilder,
+  AbstractControl,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -44,13 +67,16 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: ['', [Validators.required, Validators.minLength(7)]],
+      password: ['', [Validators.required, Validators.minLength(7)]],
     });
   }
 
   public login(): void {
     this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
     const username = this.loginForm.controls['username'].value;
     const password = this.loginForm.controls['password'].value;
     if (this.authService.login({ username, password })) {
